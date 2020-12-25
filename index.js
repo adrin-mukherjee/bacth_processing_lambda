@@ -14,9 +14,10 @@ const Config = require('./config.js');
 
 exports.handler = async(event)=>{
     const batchId = uuid(); // generate a UUID and associate with all the logs for the batch run   
-    console.log(`${batchId} >> Incoming event: ${JSON.stringify(event)}`);
 
     try{
+        console.log(`${batchId} >> Incoming event: ${JSON.stringify(event)}`);
+        
         AWS.config.update({region: Config.REGION_CODE}); 
 
         const bucketAndFile = await extractBucketAndFileName(event);
